@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lupa Password</h1>
+        <form id="forgotPasswordForm">
+            <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+            <button type="submit">Kirim Tautan Reset</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('forgotPasswordForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form melakukan pengiriman default
+
+            const email = document.getElementById('email').value;
+            const messageDiv = document.getElementById('message');
+
+            if (email) {
+                // Simulasi pengiriman email reset password
+                messageDiv.textContent = `Tautan reset password telah dikirim ke ${email}.`;
+                messageDiv.style.color = 'green';
+
+                // Lakukan pemanggilan API atau logic backend di sini
+                // fetch('/api/send-reset-link', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ email })
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     if (data.success) {
+                //         messageDiv.textContent = 'Tautan reset password berhasil dikirim!';
+                //     } else {
+                //         messageDiv.textContent = 'Terjadi kesalahan. Coba lagi nanti.';
+                //         messageDiv.style.color = 'red';
+                //     }
+                // });
+            } else {
+                messageDiv.textContent = 'Harap masukkan email yang valid.';
+                messageDiv.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
